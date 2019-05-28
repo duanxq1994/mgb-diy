@@ -40,7 +40,7 @@
 		
 		
 		<!-- 要生成哪些表 -->
-		<table tableName="user" domainObjectName="User" mapperName="UserDao" enableSelectByPrimaryKey="true"/>
+		<table tableName="user" domainObjectName="User" mapperName="UserDao"/>
 		
 	</context>
 </generatorConfiguration>  
