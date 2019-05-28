@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <properties resource="config.properties"/>
+	<context id="demo" targetRuntime="MyBatis3Simple">
+		<property name="javaFileEncoding" value="utf-8"/>
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="lombok" value="Data"/>
+        </plugin>
+		
+		<!-- 自定义Mapper -->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="src/main/java"/>
+            <property name="basePackage" value="${package.base}"/>
+            <property name="targetPackage" value="${package.mapper}"/>
+            <property name="templatePath" value="template/mapper.ftl"/>
+            <property name="suffix" value="${mapper.suffix}"/>
+            <property name="fileName" value="${tableClass.shortClassName}${suffix}.java"/>
+            <property name="templateFormatter" value="tk.mybatis.mapper.generator.formatter.FreemarkerTemplateFormatter"/>
+        </plugin>
+		
+		<!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}" />
+		<!-- 生成模型的包名和位置 -->
+		<!-- targetProject->项目名，生成在哪个项目下 -->
+		<javaModelGenerator targetPackage="${package.model}"
+			targetProject="src/main/java">
+		</javaModelGenerator>
+		<!-- 生成映射文件的包名和位置 -->
+		<!-- targetProject->项目内有多个根目录要写全路径 -->
+		<sqlMapGenerator targetPackage="${package.mapper}"
+			targetProject="src/main/resources">
+		</sqlMapGenerator>
+		
+		
+		<!-- 要生成哪些表 -->
+		<table tableName="user" domainObjectName="User" mapperName="UserDao" enableSelectByPrimaryKey="true"/>
+		
+	</context>
+</generatorConfiguration>  
