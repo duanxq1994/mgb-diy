@@ -16,7 +16,8 @@
             <property name="targetProject" value="src/main/java"/>
             <property name="basePackage" value="${package.base}"/>
             <property name="targetPackage" value="${package.mapper}"/>
-            <property name="templatePath" value="template/mapper.ftl"/>
+            <!--<property name="templatePath" value="template/mapper.ftl"/>-->
+            <property name="templatePath" value="${mapper.template.path}"/>
             <property name="suffix" value="${mapper.suffix}"/>
             <property name="fileName" value="${tableClass.shortClassName}${suffix}.java"/>
             <property name="templateFormatter" value="tk.mybatis.mapper.generator.formatter.FreemarkerTemplateFormatter"/>
