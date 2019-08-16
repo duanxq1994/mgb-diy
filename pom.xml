@@ -10,6 +10,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <project.dir>${basedir}</project.dir>
     </properties>
 
     <dependencies>
